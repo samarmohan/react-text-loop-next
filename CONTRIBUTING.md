@@ -1,57 +1,94 @@
 # Contributing
 
-We are open to, and grateful for, any contributions made by the community.
+Thank you for contributing, we accept all types of contributions from typo fixes to new features.
 
-## Reporting Issues
+### Reporting Issues
 
-Before opening an issue, please search the [issue tracker](https://github.com/braposo/react-text-loop/issues) to make sure your issue hasn't already been reported.
+Before submitting an issue, make sure your issue hasn't already been reported by checking the [issue tracker](https://github.com/samarmohan/react-text-loop-next/issues).
 
 ## Development
 
-Visit the [Issue tracker](https://github.com/braposo/react-text-loop/issues) to find a list of open issues that need attention.
+##### We follow the [GitHub Flow](https://guides.github.com/introduction/flow/)
 
-Fork, then clone the repo:
-```
-git clone https://github.com/your-username/react-text-loop-next.git
-```
+### Setup
 
-Run the examples, which will automatically watch any changes in `src/` folder:
+1. Fork, then clone the repo:
+   `git clone https://github.com/YOUR_USERNAME/react-text-loop-next.git`
+2. Run `yarn install` in the project root
 
-```
-yarn start
-```
+3. Run `yarn quality` to make sure your copy of the codebase is clean
 
-### Building and testing
+### Fixing issues
 
-Build package:
-```
-yarn build
-```
+1. Find an [issue](https://github.com/samarmohan/react-text-loop-next/issues) that you'd like to work on
 
-To run the tests:
-```
-yarn test
-```
+2. Create a branch, e.g. `patch-#`, `fixes-issue-#`, `feature/description`
 
-To perform linting with `eslint`, run the following:
-```
-yarn lint
-```
+3. Make your changes. The entry point is [src/index.ts](./src/index.ts)
+
+4. See [Submitting Changes](#submitting-changes) below
 
 ### New Features
 
-Please open an issue with a proposal for a new feature or refactoring before starting on the work. We don't want you to waste your efforts on a pull request that we won't want to accept.
+Please create an issue before starting something big, we do not want to waste your time implementing a feature we won't merge.
 
-## Submitting Changes
+### Submitting Changes
 
-* Open a new issue in the [Issue tracker](https://github.com/braposo/react-text-loop/issues).
-* Fork the repo.
-* Create a new feature branch based off the `master` branch.
-* Make sure all tests pass and there are no linting errors.
-* Submit a pull request, referencing any issues it addresses.
+- Run `yarn quality` to make sure your changes follow our style guide.
+
+- Run `yarn commit` or `yarn commit:signed` to generate a commit message using [commitizen](http://commitizen.github.io/cz-cli/)
+
+- The commit hooks using [husky](https://typicode.github.io/husky/#/) will run `yarn quality` (just to make sure), `git add -A` (to re-add the files in case the previous command changed anything), check your commit message using [commitlint](https://commitlint.js.org/#/), and then push your changes to your fork.
+
+- Submit a PR
 
 Please try to keep your pull request focused in scope and avoid including unrelated commits.
 
 After you have submitted your pull request, we'll try to get back to you as soon as possible. We may suggest some changes or improvements.
 
 Thank you for contributing!
+
+## Codebase reference
+
+Committing: We use commitizen, commitlint, and husky to make the commit process easy and fast.
+
+Building: We have a [commonjs tsconfig](./tsconfig.cjs.json) and an [es modules tsconfig](./tsconfig.esm.json) for different build targets. The [base tsconfig](./tsconfig.base.json) is used for generating types.
+
+Quality: ESLint, Prettier, and Jest, are use to maintain codebase quality.
+
+Structure: The structure of the codebase is very simple.
+
+- [\_\_tests\_\_](./__tests__/): [Jest](https://facebook.github.io/jest/) tests.
+  - [TextLoop.test.tsx](./__tests__/TextLoop.test.tsx): Tests for the [TextLoop](./src/TextLoop.tsx) component.
+- [src](./src/): The source code
+  - [index.ts](./src/index.ts): exports the main [TextLoop](./src/TextLoop.tsx) component.
+  - [utils.ts](./src/utils.ts): Random utils that [TextLoop](./src/TextLoop.tsx) uses.
+  - [TextLoop.tsx](./src/index.ts): This is the one and only component. All the magic happens here.
+
+Build scripts:
+
+```json
+"build": "npm-run-all build:*", // build everything
+"build:watch": "npm-run-all build:watch:*", // watch build everything
+"build:esm": "tsc -p tsconfig.esm.json",
+"build:cjs": "tsc -p tsconfig.cjs.json",
+"build:types": "tsc -p tsconfig.base.json --declaration --emitDeclarationOnly --declarationDir dist/types",
+"build:esm:watch": "tsc -w -p tsconfig.esm.json",
+"build:cjs:watch": "tsc -w -p tsconfig.cjs.json",
+"build:types:watch": "tsc -w -p tsconfig.base.json --declaration --emitDeclarationOnly --declarationDir dist/types",
+```
+
+Test scripts:
+
+```json
+"test": "jest",
+"test:coverage": "jest --coverage",
+```
+
+Lint scripts:
+
+```json
+"lint": "npm-run-all lint:*",
+"lint:src": "eslint src --fix", // uses eslint
+"lint:types": "tsc -p tsconfig.base.json --noEmit", //uses tsc but doesn't emit
+```

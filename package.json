@@ -1,99 +1,96 @@
 {
-    "name": "react-text-loop-next",
-    "version": "2.3.0",
-    "description": "Create an animated loop of a list of text for your headings",
-    "main": "./dist/cjs/index.js",
-    "module": "./dist/esm/index.js",
-    "types": "./dist/types/index.d.ts",
-    "sideEffects": false,
-    "scripts": {
-        "build": "npm-run-all build:*",
-        "build:watch": "npm-run-all build:watch:*",
-        "build:esm": "tsc -p tsconfig.esm.json",
-        "build:cjs": "tsc -p tsconfig.cjs.json",
-        "build:types": "tsc -p tsconfig.base.json --declaration --emitDeclarationOnly --declarationDir dist/types",
-        "build:esm:watch": "tsc -w -p tsconfig.esm.json",
-        "build:cjs:watch": "tsc -w -p tsconfig.cjs.json",
-        "build:types:watch": "tsc -w -p tsconfig.base.json --declaration --emitDeclarationOnly --declarationDir dist/types",
-        "prebuild": "rimraf dist",
-        "start:examples": "parcel examples/index.html -d examples/dist --cache-dir examples/cache --open",
-        "lint": "npm-run-all lint:*",
-        "lint:src": "eslint src --fix",
-        "lint:types": "tsc -p tsconfig.base.json --noEmit",
-        "prettier": "prettier --write .",
-        "prepublishOnly": "yarn run test && yarn run prettier && yarn run lint && && yarn run build",
-        "quality": "yarn run test && yarn run prettier && yarn run lint",
-        "test": "jest",
-        "test:coverage": "jest --coverage",
-        "prepare": "husky install",
-        "commit:signed": "git add -A && cz -S",
-        "commit": "git add -A && cz"
-    },
-    "config": {
-        "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
-        }
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/samarmohan/react-text-loop-next.git"
-    },
-    "files": [
-        "dist"
-    ],
-    "keywords": [
-        "react",
-        "component",
-        "text",
-        "animation",
-        "loop",
-        "cycle",
-        "react",
-        "motion"
-    ],
-    "author": "Samar Mohan <samar.mohan@gmail.com>",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/samarmohan/react-text-loop-next/issues"
-    },
-    "homepage": "https://github.com/samarmohan/react-text-loop-next#readme",
-    "devDependencies": {
-        "@commitlint/cli": "^13.1.0",
-        "@commitlint/config-conventional": "^13.1.0",
-        "@testing-library/jest-dom": "^5.14.1",
-        "@testing-library/react": "^12.0.0",
-        "@types/jest": "^26.0.24",
-        "@types/node": "^16.4.13",
-        "@types/react": "^17.0.16",
-        "@types/react-dom": "^17.0.9",
-        "@types/react-motion": "^0.0.31",
-        "@typescript-eslint/eslint-plugin": "^4.29.0",
-        "@typescript-eslint/parser": "^4.29.0",
-        "cz-conventional-changelog": "^3.3.0",
-        "eslint": "^7.32.0",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-import": "^2.23.4",
-        "eslint-plugin-jsx-a11y": "^6.4.1",
-        "eslint-plugin-prettier": "^3.4.0",
-        "eslint-plugin-react": "^7.17.0",
-        "eslint-plugin-react-hooks": "^4.2.0",
-        "husky": "^7.0.1",
-        "jest": "^27.0.6",
-        "npm-run-all": "^4.1.5",
-        "prettier": "^2.3.2",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "rimraf": "^3.0.0",
-        "ts-jest": "^27.0.4",
-        "typescript": "^4.3.5"
-    },
-    "peerDependencies": {
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
-    },
-    "dependencies": {
-        "cxs": "^6.2.0",
-        "react-fast-compare": "^3.2.0",
-        "react-motion": "^0.5.2"
+  "name": "react-text-loop-next",
+  "version": "2.3.0",
+  "description": "Create an animated loop of a list of text for your headings",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build": "npm-run-all build:*",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:types": "tsc --declaration --emitDeclarationOnly --declarationDir dist/types",
+    "prebuild": "rimraf dist",
+    "start:examples": "parcel examples/index.html -d examples/dist --cache-dir examples/cache --open",
+    "lint": "npm-run-all lint:*",
+    "lint:src": "eslint . --fix",
+    "lint:types": "tsc --noEmit",
+    "prettier": "prettier --write .",
+    "prepublishOnly": "yarn run test && yarn run prettier && yarn run lint && && yarn run build",
+    "quality": "yarn run test && yarn run prettier && yarn run lint",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "prepare": "husky install",
+    "commit:signed": "git add -A && cz -S",
+    "commit": "git add -A && cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samarmohan/react-text-loop-next.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "react",
+    "component",
+    "text",
+    "animation",
+    "loop",
+    "cycle",
+    "react",
+    "motion"
+  ],
+  "author": "Samar Mohan <samar.mohan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samarmohan/react-text-loop-next/issues"
+  },
+  "homepage": "https://github.com/samarmohan/react-text-loop-next#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.4.13",
+    "@types/react": "^17.0.16",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-motion": "^0.0.31",
+    "@typescript-eslint/eslint-plugin": "^4.29.0",
+    "@typescript-eslint/parser": "^4.29.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "rimraf": "^3.0.0",
+    "ts-jest": "^27.0.4",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {
+    "cxs": "^6.2.0",
+    "react-fast-compare": "^3.2.0",
+    "react-motion": "^0.5.2"
+  }
 }

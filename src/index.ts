@@ -1,1 +1,1 @@
-export {default as TextLoop} from "./components/TextLoop";
+export { default as TextLoop } from "./TextLoop";
