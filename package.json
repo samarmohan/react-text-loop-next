@@ -1,11 +1,14 @@
 {
   "name": "react-text-loop-next",
-  "version": "2.3.0",
+  "version": "0.0.1",
   "description": "Create an animated loop of a list of text for your headings",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "npm-run-all build:*",
     "build:esm": "tsc -p tsconfig.esm.json",
@@ -90,7 +93,6 @@
   },
   "dependencies": {
     "cxs": "^6.2.0",
-    "react-fast-compare": "^3.2.0",
     "react-motion": "^0.5.2"
   }
 }
