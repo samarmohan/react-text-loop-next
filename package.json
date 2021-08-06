@@ -1,36 +1,45 @@
 {
-    "name": "react-text-loop",
+    "name": "react-text-loop-next",
     "version": "2.3.0",
     "description": "Create an animated loop of a list of text for your headings",
-    "main": "./lib/index.js",
-    "module": "es/index.js",
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/esm/index.js",
+    "types": "./dist/types/index.d.ts",
     "sideEffects": false,
     "scripts": {
-        "build": "run-p build:commonjs build:es build:umd build:umd:min build:ts build:ts-es",
-        "build:es": "babel src -d es --extensions .ts,.tsx",
-        "build:commonjs": "cross-env BABEL_ENV=commonjs babel src -d lib --extensions .ts,.tsx",
-        "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack src/index.ts -o dist/react-text-loop.js",
-        "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack src/index.ts -o dist/react-text-loop.min.js",
-        "build:ts": "tsc",
-        "build:ts-es": "tsc -m es6 --outDir es",
-        "clean": "rimraf lib dist es",
-        "dev": "yarn run clean && cross-env BABEL_ENV=commonjs babel src -d lib --watch",
-        "start": "parcel examples/index.html -d examples/dist --cache-dir examples/cache --open",
-        "lint": "eslint src/ --ext .js,.tsx,.ts",
-        "prepublishOnly": "yarn run test && yarn run lint && yarn run ts:check && yarn run clean && yarn run build",
+        "build": "npm-run-all build:*",
+        "build:watch": "npm-run-all build:watch:*",
+        "build:esm": "tsc -p tsconfig.esm.json",
+        "build:cjs": "tsc -p tsconfig.cjs.json",
+        "build:types": "tsc -p tsconfig.base.json --declaration --emitDeclarationOnly --declarationDir dist/types",
+        "build:esm:watch": "tsc -w -p tsconfig.esm.json",
+        "build:cjs:watch": "tsc -w -p tsconfig.cjs.json",
+        "build:types:watch": "tsc -w -p tsconfig.base.json --declaration --emitDeclarationOnly --declarationDir dist/types",
+        "prebuild": "rimraf dist",
+        "start:examples": "parcel examples/index.html -d examples/dist --cache-dir examples/cache --open",
+        "lint": "npm-run-all lint:*",
+        "lint:src": "eslint src --fix",
+        "lint:types": "tsc -p tsconfig.base.json --noEmit",
+        "prettier": "prettier --write .",
+        "prepublishOnly": "yarn run test && yarn run prettier && yarn run lint && && yarn run build",
+        "quality": "yarn run test && yarn run prettier && yarn run lint",
         "test": "jest",
         "test:coverage": "jest --coverage",
-        "ts:check": "tsc -p tsconfig.json --allowJs false --noEmit --emitDeclarationOnly false"
+        "prepare": "husky install",
+        "commit:signed": "git add -A && cz -S",
+        "commit": "git add -A && cz"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/braposo/react-text-loop.git"
+        "url": "git+https://github.com/samarmohan/react-text-loop-next.git"
     },
     "files": [
-        "es",
-        "dist",
-        "lib",
-        "src"
+        "dist"
     ],
     "keywords": [
         "react",
@@ -42,63 +51,49 @@
         "react",
         "motion"
     ],
-    "author": {
-        "name": "Bernardo Raposo",
-        "email": "hi@bernardoraposo.com",
-        "url": "http://bernardoraposo.com"
-    },
+    "author": "Samar Mohan <samar.mohan@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/braposo/react-text-loop/issues"
+        "url": "https://github.com/samarmohan/react-text-loop-next/issues"
     },
-    "homepage": "https://github.com/braposo/react-text-loop#readme",
+    "homepage": "https://github.com/samarmohan/react-text-loop-next#readme",
     "devDependencies": {
-        "@babel/cli": "^7.7.5",
-        "@babel/core": "^7.7.5",
-        "@babel/plugin-proposal-class-properties": "^7.7.4",
-        "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
-        "@babel/plugin-transform-modules-commonjs": "^7.7.5",
-        "@babel/preset-env": "^7.7.6",
-        "@babel/preset-react": "^7.7.4",
-        "@babel/preset-typescript": "^7.7.4",
-        "@testing-library/jest-dom": "^4.2.4",
-        "@testing-library/react": "^9.4.0",
-        "@types/jest": "^24.0.23",
-        "@types/node": "^12.12.17",
-        "@types/react": "^16.9.16",
-        "@types/react-dom": "^16.9.4",
-        "@types/react-motion": "^0.0.29",
-        "@typescript-eslint/eslint-plugin": "^2.11.0",
-        "@typescript-eslint/parser": "^2.11.0",
-        "babel-eslint": "^10.0.3",
-        "babel-loader": "^8.0.6",
-        "cross-env": "^6.0.3",
-        "eslint": "^6.7.2",
-        "eslint-config-airbnb-base": "^14.0.0",
-        "eslint-config-prettier": "^6.7.0",
-        "eslint-plugin-import": "^2.19.1",
-        "eslint-plugin-prettier": "^3.1.1",
+        "@commitlint/cli": "^13.1.0",
+        "@commitlint/config-conventional": "^13.1.0",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^12.0.0",
+        "@types/jest": "^26.0.24",
+        "@types/node": "^16.4.13",
+        "@types/react": "^17.0.16",
+        "@types/react-dom": "^17.0.9",
+        "@types/react-motion": "^0.0.31",
+        "@typescript-eslint/eslint-plugin": "^4.29.0",
+        "@typescript-eslint/parser": "^4.29.0",
+        "cz-conventional-changelog": "^3.3.0",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.4.0",
         "eslint-plugin-react": "^7.17.0",
-        "jest": "^24.9.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "husky": "^7.0.1",
+        "jest": "^27.0.6",
         "npm-run-all": "^4.1.5",
-        "parcel-bundler": "^1.12.4",
-        "prettier": "^1.19.1",
-        "react": "^16.12.0",
-        "react-dom": "^16.12.0",
+        "prettier": "^2.3.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
         "rimraf": "^3.0.0",
-        "source-map-loader": "^0.2.4",
-        "ts-jest": "^24.2.0",
-        "typescript": "^3.7.3",
-        "webpack": "^4.41.2",
-        "webpack-cli": "^3.3.10"
+        "ts-jest": "^27.0.4",
+        "typescript": "^4.3.5"
     },
     "peerDependencies": {
-        "react": "^15.0.1 || ^16.0.1",
-        "react-dom": "^15.0.1 || ^16.0.1"
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
     },
     "dependencies": {
         "cxs": "^6.2.0",
-        "react-fast-compare": "2.0.4",
+        "react-fast-compare": "^3.2.0",
         "react-motion": "^0.5.2"
     }
 }

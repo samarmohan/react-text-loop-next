@@ -12,7 +12,7 @@ Visit the [Issue tracker](https://github.com/braposo/react-text-loop/issues) to 
 
 Fork, then clone the repo:
 ```
-git clone https://github.com/your-username/react-text-loop.git
+git clone https://github.com/your-username/react-text-loop-next.git
 ```
 
 Run the examples, which will automatically watch any changes in `src/` folder:

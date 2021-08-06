@@ -4,20 +4,13 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
-
-        "lib": ["es2015", "dom"],
-        "target": "es5",
-        "module": "commonjs",
+        "lib": ["es6", "dom", "DOM.Iterable", "ESNext"],
         "moduleResolution": "node",
         "jsx": "react",
-        "emitDeclarationOnly": true,
         "preserveConstEnums": true,
         "removeComments": true,
         "sourceMap": true,
         "pretty": true,
-        "declaration": true,
-        "outDir": "./lib",
-
         "strict": true,
         "noImplicitAny": false,
         "noImplicitReturns": true,
@@ -26,7 +19,6 @@
         "strictNullChecks": true,
         "noUnusedLocals": true,
         "noUnusedParameters": false,
-
         "baseUrl": "src"
     },
     "include": ["src"],

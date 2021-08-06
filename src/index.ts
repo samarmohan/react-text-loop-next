@@ -1,3 +1,1 @@
-import TextLoop from "./components/TextLoop";
-
-export default TextLoop;
+export {default as TextLoop} from "./components/TextLoop";

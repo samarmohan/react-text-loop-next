@@ -1,0 +1,75 @@
+{
+	"env": {
+		"browser": true,
+		"es2021": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:react-hooks/recommended",
+		"plugin:jsx-a11y/recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:prettier/recommended",
+		"plugin:import/typescript",
+		"plugin:import/recommended",
+		"next",
+		"prettier"
+	],
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 12,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react",
+		"@typescript-eslint/eslint-plugin",
+		"react-hooks"
+	],
+	"rules": {
+		"prettier/prettier": [
+			"error",
+			{
+				"endOfLine": "auto"
+			}
+		],
+		"@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-ignore": "allow-with-description",
+        "minimumDescriptionLength": 10
+      }
+    ],		"@typescript-eslint/no-explicit-any": "off",
+		"@typescript-eslint/no-unused-vars": "off",
+		"@typescript-eslint/no-var-requires": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/member-delimiter-style": "off",
+		"@typescript-eslint/no-empty-function": "off",
+		"@typescript-eslint/no-shadow": "error",
+		"@typescript-eslint/no-magic-numbers": "off",
+		"@typescript-eslint/no-use-before-define": "error",
+		"@typescript-eslint/semi": [
+			"error",
+			"always",
+			{
+				"omitLastInOneLineBlock": true
+			}
+		],
+		"@typescript-eslint/ban-types": [
+			"warn"
+		],
+		"no-empty-pattern": "off",
+		"react/prop-types": "off",
+		"react/react-in-jsx-scope": "off",
+		"next/no-html-link-for-pages": "off"
+	}
+}
