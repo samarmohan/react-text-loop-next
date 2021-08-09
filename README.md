@@ -1,4 +1,4 @@
-## react-text-loop
+## react-text-loop-next
 
 ![text-loop2](https://cloud.githubusercontent.com/assets/38172/24254063/d5e9c38c-0fd9-11e7-9b75-46dc00421cd7.gif)
 
@@ -8,7 +8,6 @@ animations and spring params.
 
 [![npm version][version-badge]][npm]
 [![npm downloads][downloads-badge]][npm]
-[![gzip size][size-badge]][size]
 [![MIT License][license-badge]][license]
 [![PRs Welcome][prs-badge]][prs]
 
@@ -16,35 +15,31 @@ animations and spring params.
 
 ## Installation
 
-`npm install react-text-loop` or `yarn add react-text-loop`
+`npm install react-text-loop-next` or `yarn add react-text-loop-next`
 
 ## How to use
 
-[![Edit react-text-loop][codesandbox-badge]][codesandbox]
+[![Edit react-text-loop-next][codesandbox-badge]][codesandbox]
 
 You can also run the examples by cloning the repo and running `yarn start`.
 
 ### Usage
 
 ```jsx
-import TextLoop from "react-text-loop";
-import Link from "react-router";
-import { BodyText } from "./ui";
+import { TextLoop } from "react-text-loop-next";
 
-class App extends Component {
-  render() {
-    return (
-      <h2>
-        <TextLoop>
-          <span>First item</span>
-          <Link to="/">Second item</Link>
-          <BodyText>Third item</BodyText>
-        </TextLoop>{" "}
-        and something else.
-      </h2>
-    );
-  }
-}
+const App = () => {
+  return (
+    <h2>
+      <TextLoop>
+        <span>First item</span>
+        <a href="/">Second item</a>
+        <p style={{ color: "red" }}>Third item</p>
+      </TextLoop>{" "}
+      and something else.
+    </h2>
+  );
+};
 ```
 
 ### Props
@@ -115,21 +110,20 @@ For many other examples, please have a look at the [CodeSandbox playground][code
 ## Contributing
 
 Please follow our
-[contributing guidelines](https://github.com/braposo/react-text-loop/blob/master/CONTRIBUTING.md).
+[contributing guidelines](https://github.com/braposo/react-text-loop-next/blob/master/CONTRIBUTING.md).
 
 ## License
 
-[MIT](https://github.com/braposo/react-text-loop/blob/master/LICENSE)
+[MIT](https://github.com/braposo/react-text-loop-next/blob/master/LICENSE)
 
-[npm]: https://www.npmjs.com/package/react-text-loop
-[license]: https://github.com/braposo/react-text-loop/blob/master/LICENSE
+[npm]: https://www.npmjs.com/package/react-text-loop-next
+[license]: https://github.com/braposo/react-text-loop-next/blob/master/LICENSE
 [prs]: http://makeapullrequest.com
-[size]: https://unpkg.com/react-text-loop/dist/react-text-loop.min.js
-[version-badge]: https://img.shields.io/npm/v/react-text-loop.svg?style=flat-square
-[downloads-badge]: https://img.shields.io/npm/dm/react-text-loop.svg?style=flat-square
-[license-badge]: https://img.shields.io/npm/l/react-text-loop.svg?style=flat-square
-[size-badge]: http://img.badgesize.io/https://unpkg.com/react-text-loop/dist/react-text-loop.min.js?compression=gzip&style=flat-square
+[size]: https://unpkg.com/react-text-loop-next/dist/react-text-loop-next.min.js
+[version-badge]: https://img.shields.io/npm/v/react-text-loop-next.svg?style=flat-square
+[downloads-badge]: https://img.shields.io/npm/dm/react-text-loop-next.svg?style=flat-square
+[license-badge]: https://img.shields.io/npm/l/react-text-loop-next.svg?style=flat-square
 [modules-badge]: https://img.shields.io/badge/module%20formats-umd%2C%20cjs%2C%20esm-green.svg?style=flat-square
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [codesandbox-badge]: https://codesandbox.io/static/img/play-codesandbox.svg
-[codesandbox]: https://codesandbox.io/s/react-text-loop-playground-br4q1
+[codesandbox]: https://codesandbox.io/s/react-text-loop-next-playground-br4q1
