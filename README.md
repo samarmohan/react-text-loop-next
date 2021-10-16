@@ -4,7 +4,10 @@
 
 An animated loop of text nodes for your headings. Uses
 [react-motion](https://github.com/chenglou/react-motion) for the transition so it handles super fast
-animations and spring params.
+animations and spring params. 
+It's 6x smaller, maintained, but uses the same API as the original [`react-text-loop`](https://github.com/braposo/react-text-loop).
+Used by [ant-design](https://github.com/ant-design/ant-design)!
+Thanks to [@braposo]((https://github.com/braposo) for creating the original!
 
 [![npm version][version-badge]][npm]
 [![npm downloads][downloads-badge]][npm]
