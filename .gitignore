@@ -26,3 +26,10 @@ es/
 lib/
 examples/cache/
 examples/dist/
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
